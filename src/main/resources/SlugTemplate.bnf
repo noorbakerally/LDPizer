@@ -1,0 +1,12 @@
+<exp> := 'asd' | <builtInCall> | <rFunc> ;
+<builtInCall> := URIPart ( <exp> , ' <URIFlag> ' ) | QueryPart ( <exp> , <num> ). <queryFuncPart> |
+                 QueryPart ( <exp> , <num> ) | PathPart ( <exp> , <num> ) | HostPart ( <exp> , <num> )
+                 | Split ( <exp> , <string> , <num> );
+<r> := ^_+r\.;
+<rFunc> := <r> iri. <rFunPart> | <r> ppath ( <string> ) | <r> iri;
+<rFunPart> := scheme | user | password | port | fragment | path\u005b <num> \u005d
+| path | host\u005b <num> \u005d | host | query\u005b <num> \u005d. <queryFuncPart> | query\u005b <num> \u005d | query;
+<queryFuncPart> := key | value;
+<num> := ^[0-9]+;
+<string> := ^'.*?';
+<URIFlag> := SCHEME | USER | PASSWORD | HOST | PORT | PATH | QUERY | FRAGMENT;

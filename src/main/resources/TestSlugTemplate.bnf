@@ -1,0 +1,4 @@
+<exp> := <rFunc> ;
+<rFunc> := ^_+r\. <ririFunc> ;
+<ririFunc> := ^iri;
+<rFunPart> := ^\.(scheme | user | password | port | fragment | path\u005b <num> \u005d);

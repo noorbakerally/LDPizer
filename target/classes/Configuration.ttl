@@ -1,0 +1,67 @@
+@base <http://localhost:8888/> .
+@prefix ldp:     <http://www.w3.org/ns/ldp#> .
+@prefix :     <http://opensensingcity.emse.fr/LDPDesignVocabulary/> .
+@prefix data:     <http://opensensingcity.emse.fr/LDPDesign/data/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+data:catalogsContainerMap a :ContainerMap;
+    :slugTemplate "catalogs";
+    :containerType ldp:BasicContainer;
+    :containerMap data:catalogContainerMap .
+
+data:catalogContainerMap a :ContainerMap;
+    :slugTemplate "paris-{_r.iri.path[2]}";
+    :containerType ldp:BasicContainer;
+    :containerMap data:datasetsContainerMap;
+    :resourceMap data:catalogResourceMap .
+
+data:datasetsContainerMap a :ContainerMap;
+    :containerType ldp:BasicContainer;
+    :containerMap data:datasetContainerMap;
+    :slugTemplate "datasets" .
+
+data:datasetContainerMap a :ContainerMap;
+    :slugTemplate "{_r.iri.path[4]}";
+    :containerType ldp:BasicContainer;
+    :containerMap data:distributionsContainerMap;
+    :resourceMap data:datasetResourceMap .
+
+data:distributionsContainerMap a :ContainerMap;
+    :containerType ldp:BasicContainer;
+    :containerMap data:distributionRDFSourceMap;
+    :slugTemplate "distributions" .
+
+data:distributionRDFSourceMap a :ContainerMap;
+    :slugTemplate "{_r.iri.path[4]}";
+    :nonRDFSourceMap data:distributionNonRDFSourceMap;
+    :resourceMap data:distributionResourceMap .
+
+data:distributionNonRDFSourceMap a :NonRDFSourceMap;
+    :slugTemplate "file";
+    :contentType "{__r.ppath('dcat:mediaType')}";
+    :resourceMap data:distributionFileResourceMap .
+
+data:distributionFileResourceMap a :ResourceMap;
+    :resourceQuery "{ ?_r dcat:accessURL ?resource . }";
+    :dataSource data:DataSource1 .
+
+data:distributionResourceMap a :ResourceMap;
+    :resourceQuery "{ ?__r dcat:distribution ?resource . } LIMIT 3";
+    :graphTemplate :SubjectObjectGraph;
+    :dataSource data:DataSource1 .
+
+data:datasetResourceMap a :ResourceMap;
+    :resourceQuery "{ ?__r dcat:dataset  ?resource . } LIMIT 5";
+    :graphQuery "CONSTRUCT { ?_r ?p ?o . } WHERE {  ?_r ?p ?o . FILTER (?p not in (dcat:distribution)) }";
+    :linkToSource foaf:primaryTopic;
+    :dataSource data:DataSource1 .
+
+data:catalogResourceMap a :ResourceMap;
+    :resourceQuery "{ ?resource a dcat:Catalog .}";
+    :graphQuery "CONSTRUCT { ?_r ?p ?o . } WHERE {  ?_r ?p ?o . FILTER (?p not in (dcat:dataset)) }";;
+    :linkToSource foaf:primaryTopic;
+    :dataSource data:DataSource1 .
+
+data:DataSource1 a :DataSource;
+    :location "/home/noor/Downloads/paris.ttl";

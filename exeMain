@@ -1,0 +1,3 @@
+mvn clean compile -DskipTests
+mvn exec:java -Dexec.mainClass="fr.emse.opensensingcity.main"
+
