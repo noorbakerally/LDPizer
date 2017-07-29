@@ -19,5 +19,5 @@ LDPizer can be used via its command line interface. Build it using `mvn clean in
 6. -v: Generate Virtual LDP design document
 
 ## Abstract model of design document
-!(Abstract Model)(https://raw.githubusercontent.com/noorbakerally/LDPDesignVocabulary/master/abstract_model.png)
+![Abstract Model](https://raw.githubusercontent.com/noorbakerally/LDPDesignVocabulary/master/abstract_model.png)
 
