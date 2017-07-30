@@ -84,7 +84,7 @@ LDPizer can be used via its command line interface. Build it using `mvn clean in
 	- `resourceQuery` is executed on the `DataSource`
 	- for a particular `resource` obtained by executing the `resourceQuery` on the `DataSource`, if its belonging `SourceMap` is a `ContainerMap` or `RDFSourceMap`, then 
 	a graph for the resource is generated from the particular `DataSource` using the `graphQuery` or `graphTemplate` of the `ResourceMap`
-	- In the current version of the LDPizer, `DataSource` are considered separately and therefore the `resourceQuery` is executed on each `DataSource` without considering distributed query federation semantics
+	- In the current version of the LDPizer, `DataSource` are considered separately and therefore the `resourceQuery` is executed on each `DataSource` without considering distributed query processing semantics
 
 
 
