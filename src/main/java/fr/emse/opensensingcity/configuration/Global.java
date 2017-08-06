@@ -11,6 +11,7 @@ import org.apache.jena.riot.system.PrefixMap;
  * Created by bakerally on 6/14/17.
  */
 public class Global {
+    public static boolean authorization  =false;
     public static String  baseURI = "http://ci.emse.fr/marmotta/ldp";
     public static String vocabularyPrefix = "http://opensensingcity.emse.fr/LDPDesignVocabulary/";
 
@@ -18,6 +19,8 @@ public class Global {
         return vocabularyPrefix+lname;
     }
 
+    public static String username;
+    public static String password;
 
     public static String prefixes = "PREFIX ldp: <http://www.w3.org/ns/ldp#> \n" +
             "PREFIX :     <http://opensensingcity.emse.fr/LDPDesignVocabulary/> \n" +

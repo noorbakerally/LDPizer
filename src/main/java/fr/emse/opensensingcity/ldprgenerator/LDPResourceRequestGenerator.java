@@ -8,6 +8,7 @@ import fr.emse.opensensingcity.configuration.Configuration;
 import fr.emse.opensensingcity.configuration.ContainerMap;
 import fr.emse.opensensingcity.configuration.Global;
 import fr.emse.opensensingcity.configuration.RDFSourceMap;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -93,6 +94,11 @@ public class LDPResourceRequestGenerator {
             httpPost.setEntity(new ByteArrayEntity(nonRDFSource.getBinary()) );
         }
         httpPost.addHeader("Slug",resource.getSlug());
+
+        if (Global.authorization){
+            String basic_auth = new String(Base64.encodeBase64((Global.username + ":" + Global.password).getBytes()));
+            httpPost.addHeader("Authorization", "Basic " + basic_auth);
+        }
         return httpPost;
     }
 
