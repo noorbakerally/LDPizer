@@ -40,6 +40,7 @@ public class ContainerMap extends RDFSourceMap{
             container.setContainer(this.getContainer());
             String uri = IRIGenerator.getSlug(container,getSlugTemplate());
             container.setSlug(uri);
+            System.out.println("Create null container with slug:"+uri);
             if (uri.equals("distributions")){
                 System.out.println();
             }
@@ -50,6 +51,7 @@ public class ContainerMap extends RDFSourceMap{
         }
 
         for (Map.Entry <String,RelatedResource> rrEntry:getRelatedResources().entrySet()){
+            System.out.println("Create container for related resource:"+ rrEntry.getValue().getIRI());
             RelatedResource rr = rrEntry.getValue();
             Container c = new BasicContainer("");
             c.setContainer(this.getContainer());

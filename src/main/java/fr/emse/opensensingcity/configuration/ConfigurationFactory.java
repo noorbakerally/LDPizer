@@ -19,6 +19,7 @@ public class ConfigurationFactory {
     private static Map <String,ContainerMap> containerMaps = new HashMap<String, ContainerMap>();
     static Configuration configuration;
     public static PrefixMapping prefixMap;
+
     public  static Configuration createConfiguration(String confLocation){
         configuration = new Configuration();
 

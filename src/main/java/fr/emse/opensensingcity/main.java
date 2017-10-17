@@ -7,6 +7,7 @@ import fr.emse.opensensingcity.tests.TestSlug;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.io.FileUtils;
+import org.apache.jena.riot.RDFDataMgr;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,14 +21,34 @@ import java.net.URL;
 public class main {
     public static void main(String args []) throws ParseException {
         ClassLoader classLoader = main.class.getClassLoader();
-        File file = new File(classLoader.getResource("Configuration.ttl").getFile());
 
-        //Configuration configuration = ConfigurationFactory.createConfiguration(file.getAbsolutePath());
-        //configuration.print();
-        //configuration.execute();
-        //LDPResourceRequestGenerator rg = new LDPResourceRequestGenerator(configuration);
 
-        String baseURL = "";
+        /*Global.baseURI = "http://localhost:8080/marmotta/ldp";
+        String cfile;
+        //cfile = "file:///home/bakerally/Downloads/dds/ParisCatalog.dd.ttl";
+        //cfile = "https://raw.githubusercontent.com/noorbakerally/ISWC2017Demo/master/ParisCatalog.dd.ttl";
+        cfile = "file:///home/bakerally/Downloads/dds/ParisCatalog1.dd.ttl";
+
+        Configuration configuration = ConfigurationFactory.createConfiguration(cfile);
+        try {
+            configuration.execute();
+            LDPResourceRequestGenerator rg = new LDPResourceRequestGenerator(configuration);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
+
+
+        /*try {
+            Global.baseURI = "http://localhost:8080/marmotta/ldp";
+            Configuration configuration = ConfigurationFactory.createConfiguration("file:///home/bakerally/Downloads/ParisCatalog.dd.ttl");
+            configuration.execute();
+            LDPResourceRequestGenerator rg = new LDPResourceRequestGenerator(configuration);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
+       String baseURL = "";
         CommandLine cl = CMDConfigurations.parseArguments(args);
         if (cl.getOptions().length == 0){
             CMDConfigurations.displayHelp();
@@ -70,9 +91,9 @@ public class main {
         if (cl.hasOption("d")){
             String designDocumentPath = cl.getOptionValue("d");
             try{
-                File designDocument = new File(designDocumentPath);
-                System.out.println("Loading design documnent");
-                Configuration configuration = ConfigurationFactory.createConfiguration(file.getAbsolutePath());
+
+                System.out.println("Loading the design documnent");
+                Configuration configuration = ConfigurationFactory.createConfiguration(designDocumentPath);
 
                 System.out.println("Design Document loaded");
                 configuration.print();
@@ -89,13 +110,6 @@ public class main {
             }
         }
 
-
-
-
-        //System.out.println("test");
-        //LDPRGenerator.sendRequest(configuration);
-        //TestSlug.test3("__r.iri");
-        //TestSlug.testHierarchicalSlug("{_r.iri.path[4]}");
-
+    
     }
 }

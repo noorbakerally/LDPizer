@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GenerateLDPR-PC.iml" filepath="$PROJECT_DIR$/GenerateLDPR-PC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LDPizer.iml" filepath="$PROJECT_DIR$/LDPizer.iml" />
     </modules>
   </component>
 </project>

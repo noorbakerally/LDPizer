@@ -23,12 +23,14 @@ public class Container extends RDFSource {
     public void processContainerMaps() throws IOException {
         for (Map.Entry <String,ContainerMap> containerMapEntry:containerMaps.entrySet()){
             ContainerMap containerMap = containerMapEntry.getValue();
+            System.out.println("Process containerMap:"+containerMap.getIRI());
             containerMap.generateResources();
         }
     }
     public void processRDFSourceMaps() throws IOException {
         for (Map.Entry <String,RDFSourceMap> rdfSourceMapEntry:rdfSourceMaps.entrySet()){
             RDFSourceMap rdfSourceMap = rdfSourceMapEntry.getValue();
+            System.out.println("Process RDFSourceMap:"+rdfSourceMap.getIRI());
             rdfSourceMap.generateResources();
         }
     }
@@ -36,6 +38,7 @@ public class Container extends RDFSource {
     public void processNonRDFSourceMaps() {
         for (Map.Entry <String,NonRDFSourceMap> nonRdfSourceMapEntry:nonrdfSourceMaps.entrySet()){
             NonRDFSourceMap nonRdfSourceMap = nonRdfSourceMapEntry.getValue();
+            System.out.println("Process NonRDFSourceMap:"+nonRdfSourceMap.getIRI());
             nonRdfSourceMap.generateResources();
         }
     }

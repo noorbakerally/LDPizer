@@ -84,6 +84,7 @@ public class RDFSourceMap extends SourceMap {
     public void generateResources() throws IOException {
         generateRelatedResources();
         for (Map.Entry <String,RelatedResource> rrEntry:getRelatedResources().entrySet()){
+            System.out.println("Create RDFSource for related resource:"+ rrEntry.getValue().getIRI());
             RelatedResource rr = rrEntry.getValue();
             RDFSource rdfSource = null;
             rdfSource = new RDFSource("temp");

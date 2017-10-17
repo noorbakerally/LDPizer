@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="GenerateLDPR-PC" />
+        <module name="LDPizer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="GenerateLDPR-PC" target="1.7" />
+      <module name="LDPizer" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

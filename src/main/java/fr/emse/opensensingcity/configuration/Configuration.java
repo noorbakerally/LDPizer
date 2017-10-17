@@ -23,6 +23,7 @@ public class Configuration {
 
     /*Core Methods*/
     public void execute() throws IOException {
+        System.out.println("Processing top level container maps");
         for (Map.Entry <String,ContainerMap> entry :containerMaps.entrySet()){
             ContainerMap containerMap = entry.getValue();
             if (containerMap.getParentContainerMap() !=null) continue;
