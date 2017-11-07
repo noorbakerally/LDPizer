@@ -90,6 +90,10 @@ public class RDFSourceMap extends SourceMap {
             rdfSource = new RDFSource("temp");
             rdfSource.setRelatedResource(rr);
             rdfSource.setGraph(rr.getGraph());
+
+
+
+
             String slug = IRIGenerator.getSlug(rdfSource, getSlugTemplate());
             rdfSource.setSlug(slug);
             rdfSource.setContainer(this.getContainer());

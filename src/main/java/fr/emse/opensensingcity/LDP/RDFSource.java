@@ -29,6 +29,8 @@ public class RDFSource extends Resource {
     }
     public void setGraph(Model graph) {
         this.graph = graph;
+
+        graph.add(ResourceFactory.createResource(""), FOAF.primaryTopic,ResourceFactory.createResource(getRelatedResource().getIRI()));
     }
     public RelatedResource getRelatedResource() {
         return relatedResource;

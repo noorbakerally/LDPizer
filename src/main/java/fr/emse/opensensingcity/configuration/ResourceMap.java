@@ -28,6 +28,7 @@ public class ResourceMap {
     /*Core Methods*/
 
     String processRawQuery(SourceMap sourceMap, String resourceQuery, String rIRI){
+        System.out.println("ResourceMap.java processing query for Map:"+sourceMap.getIRI());
         String finalQuery = resourceQuery;
         Container container = sourceMap.getContainer();
         Pattern p = Pattern.compile("_+r");
@@ -72,9 +73,10 @@ public class ResourceMap {
             //iterating through all the solutions and
             //get the resourse
             while (rs.hasNext()){
+
                 QuerySolution qs = rs.next();
                 String resourceIRI = qs.get("?resource").toString();
-
+                System.out.println("ResourceMap.java Generating Graph of "+resourceIRI);
                 //the list of models for the current resource from the datasets
                 List <Model> models;
                 if (!resources.keySet().contains(resourceIRI)){
@@ -125,7 +127,7 @@ public class ResourceMap {
             }
         } else {
             query = graphQuery;
-            query = query.replace("?_resource","<"+resourceIRI+">");
+            query = query.replace("?_r","<"+resourceIRI+">");
         }
         //System.out.println("ResourceMap.java"+query);
         return query;

@@ -7,6 +7,7 @@ import fr.emse.opensensingcity.tests.TestSlug;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.io.FileUtils;
+import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 
 import java.io.File;
@@ -22,12 +23,13 @@ public class main {
     public static void main(String args []) throws ParseException {
         ClassLoader classLoader = main.class.getClassLoader();
 
+        //RDFDataMgr.loadModel("https://raw.githubusercontent.com/noorbakerally/ISWC2017Demo/master/ParisGeo.ttl", Lang.TTL);
 
         /*Global.baseURI = "http://localhost:8080/marmotta/ldp";
         String cfile;
-        //cfile = "file:///home/bakerally/Downloads/dds/ParisCatalog.dd.ttl";
-        //cfile = "https://raw.githubusercontent.com/noorbakerally/ISWC2017Demo/master/ParisCatalog.dd.ttl";
-        cfile = "file:///home/bakerally/Downloads/dds/ParisCatalog1.dd.ttl";
+
+        cfile = "file:///home/bakerally/Downloads/dds/ParisCatalog.dd.ttl";
+        //cfile = "file:///home/bakerally/Downloads/dds/ParisCatalog1.dd.ttl";
 
         Configuration configuration = ConfigurationFactory.createConfiguration(cfile);
         try {
@@ -109,7 +111,5 @@ public class main {
                 System.out.println("Error while trying to load file:"+designDocumentPath);
             }
         }
-
-    
     }
 }

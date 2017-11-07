@@ -1,0 +1,1 @@
+java -jar target/LDPizer-1.0-SNAPSHOT-jar-with-dependencies.jar -d /home/bakerally/Downloads/dds/ParisCatalog.dd.ttl
